@@ -4,6 +4,8 @@ A [Claude Code](https://docs.anthropic.com/en/docs/claude-code) skill that downl
 
 **Zero setup required.** Claude will automatically install Homebrew and yt-dlp if they're missing.
 
+![Demo showing the skill installing itself and extracting a YouTube transcript](demo.png)
+
 ## What It Does
 
 When you share a YouTube URL or ask about video content, Claude Code will automatically:
