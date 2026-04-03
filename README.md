@@ -2,9 +2,11 @@
 
 A [Claude Code](https://docs.anthropic.com/en/docs/claude-code) skill that downloads YouTube transcripts, metadata, and videos using [yt-dlp](https://github.com/yt-dlp/yt-dlp).
 
+**Zero setup required.** Claude will automatically install Homebrew and yt-dlp if they're missing.
+
 ## What It Does
 
-When you share a YouTube URL or ask about video content, Claude Code will automatically use this skill to:
+When you share a YouTube URL or ask about video content, Claude Code will automatically:
 
 - **Extract transcripts** - auto-generated or manual subtitles as clean text
 - **Get metadata** - title, description, duration, uploader, upload date
@@ -13,25 +15,15 @@ When you share a YouTube URL or ask about video content, Claude Code will automa
 
 ## Installation
 
-### Prerequisites
-
-Install yt-dlp (brew recommended - stays current with YouTube changes):
-```bash
-brew install yt-dlp
-# or: pip install -U yt-dlp
-```
-
-> **Important:** YouTube frequently changes its streaming format (SABR). Older yt-dlp versions will 403 on many videos. Keep it updated with `brew upgrade yt-dlp`.
-
-### Add to Claude Code
-
 Clone into your Claude Code skills directory:
 
 ```bash
 git clone https://github.com/adampaulwalker/youtube-skill-claude-code.git ~/.claude/skills/youtube
 ```
 
-Restart Claude Code. The skill will be auto-discovered.
+Restart Claude Code. That's it.
+
+> Dependencies (Homebrew, yt-dlp) are installed automatically on first use. No manual setup needed.
 
 ## Usage
 
@@ -46,7 +38,7 @@ Just use natural language in Claude Code:
 
 Claude Code auto-discovers skills by scanning `~/.claude/skills/` for folders containing a `SKILL.md` file. This skill gives Claude the `Bash` tool permission to run `yt-dlp` commands for YouTube operations.
 
-See [SKILL.md](SKILL.md) for the full command reference, including troubleshooting for 403 errors.
+On first use, Claude checks for Homebrew and yt-dlp and installs them if missing. See [SKILL.md](SKILL.md) for the full command reference.
 
 ## License
 
