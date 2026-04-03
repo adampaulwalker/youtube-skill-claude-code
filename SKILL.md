@@ -7,7 +7,16 @@ allowed-tools:
 
 # YouTube Video Tool (yt-dlp)
 
-Use `yt-dlp` for all YouTube operations. Install it via `pip install yt-dlp` or `brew install yt-dlp`.
+Use `yt-dlp` for all YouTube operations.
+
+## Installation
+
+**Prefer brew over pip** - the brew version stays current and handles YouTube's SABR streaming changes. Older pip versions (pre-2026) will 403 on many videos.
+
+```bash
+brew install yt-dlp
+# or: pip install -U yt-dlp
+```
 
 ## Common Operations
 
@@ -51,6 +60,18 @@ yt-dlp -x --audio-format mp3 -o "%(title)s.%(ext)s" "URL"
 ```bash
 yt-dlp -o "%(playlist_title)s/%(title)s.%(ext)s" "PLAYLIST_URL"
 ```
+
+## Troubleshooting
+
+### 403 Errors / SABR Streaming
+
+YouTube increasingly forces SABR streaming, which older yt-dlp versions can't handle. If you get 403 errors or only see a single low-quality format:
+
+1. **Update yt-dlp first**: `brew upgrade yt-dlp` or `pip install -U yt-dlp`
+2. **Try the TV client**: `yt-dlp --extractor-args "youtube:player_client=tv" "URL"`
+3. **List formats to diagnose**: `yt-dlp -F "URL"` - if you only see one SABR-restricted format, updating will likely fix it
+
+This is tracked in yt-dlp issue #12482.
 
 ## Processing VTT Transcripts
 
